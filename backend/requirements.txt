@@ -1,9 +1,9 @@
 Django==5.2.12
-django-cors-headers==3.14.0
 djangorestframework==3.14.0
-djangorestframework_simplejwt==5.5.1
-joblib @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_dfriz0qjwt/croot/joblib_1685113297703/work
-mysqlclient @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_8a4gvq9anj/croot/mysqlclient_1752662632751/work
-PyJWT @ file:///Users/ec2-user/ci_py311/pyjwt_1678379090382/work
-python-dotenv @ file:///Users/ec2-user/ci_py311/python-dotenv_1678319919985/work
-reportlab==4.4.10
+django-cors-headers==3.14.0
+djangorestframework-simplejwt==5.5.1
+gunicorn==21.2.0
+PyMySQL==1.1.2
+mysqlclient==2.2.0
+python-dotenv==1.0.0
+reportlab==4.0.9
