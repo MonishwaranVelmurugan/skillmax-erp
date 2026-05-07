@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Great+Vibes&display=swap');
+
+:root {
+    --cert-primary: #1a365d;
+    --cert-gold: #c5a059;
+    --cert-gold-light: #e6d5b8;
+    --cert-bg: #fdfcf7;
+}
+
+.certificate-preview-container {
+    perspective: 1000px;
+}
+
+.certificate-card {
+    width: 100%;
+    aspect-ratio: 1.414 / 1;
+    /* A4 Ratio */
+    background: var(--cert-bg);
+    position: relative;
+    border: 15px solid var(--cert-primary);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    overflow: hidden;
+    color: var(--cert-primary);
+    font-family: 'Playfair Display', serif;
+}
+
+.certificate-inner-border {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px solid var(--cert-gold);
+    pointer-events: none;
+}
+
+.certificate-ornament {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--cert-gold);
+    z-index: 1;
+}
+
+.ornament-top-left {
+    top: 20px;
+    left: 20px;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.ornament-top-right {
+    top: 20px;
+    right: 20px;
+    border-left: 0;
+    border-bottom: 0;
+}
+
+.ornament-bottom-left {
+    bottom: 20px;
+    left: 20px;
+    border-right: 0;
+    border-top: 0;
+}
+
+.ornament-bottom-right {
+    bottom: 20px;
+    right: 20px;
+    border-left: 0;
+    border-top: 0;
+}
+
+.certificate-header {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--cert-gold);
+}
+
+.certificate-title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.certificate-subtitle {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.certificate-student-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    color: var(--cert-primary);
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--cert-gold-light);
+    min-width: 60%;
+    text-align: center;
+}
+
+.certificate-course {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 20px;
+    color: var(--cert-primary);
+}
+
+.certificate-footer {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.footer-item {
+    text-align: center;
+    border-top: 1px solid var(--cert-primary);
+    padding-top: 10px;
+    min-width: 150px;
+}
+
+.signature-label,
+.date-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.certificate-id {
+    position: absolute;
+    bottom: 25px;
+    right: 40px;
+    font-size: 0.7rem;
+    font-family: 'Libre Baskerville', serif;
+    color: rgba(26, 54, 93, 0.6);
+}
+
+.premium-search-container .input-group {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.premium-search-container .input-group:focus-within {
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.15);
+    transform: translateY(-2px);
+}
+
+.eligibility-status-card {
+    transition: all 0.3s ease;
+}
+
+.eligibility-status-card.eligible {
+    border-left: 5px solid #198754;
+}
+
+.eligibility-status-card.ineligible {
+    border-left: 5px solid #dc3545;
+}
+
+.btn-generate {
+    background: linear-gradient(135deg, var(--cert-primary) 0%, #2c5282 100%);
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-generate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,95 @@
+# SKILLMAX ERP - Project Documentation
+
+## 1. Project Overview
+Skillmax ERP is a comprehensive Student Management and Lead Tracking System designed for educational institutions. It streamlines the lifecycle of a student from initial lead generation to admission, course tracking, and certification.
+
+## 2. Tech Stack
+
+### Frontend
+- **Framework**: React.js (built with Vite)
+- **Styling**: Bootstrap 5.3 + Vanilla CSS
+- **Icons**: Lucide React, Bootstrap Icons
+- **State Management**: React Context API / Local Storage
+- **Routing**: React Router DOM (v7)
+- **Networking**: Axios
+- **Visualization**: Chart.js, React-Chartjs-2
+- **Utilities**: 
+  - jsPDF & html2canvas (Certificate generation)
+  - React Toastify (Notifications)
+  - React Easy Crop (Image processing)
+
+### Backend
+- **Framework**: Django (Python 3.x)
+- **API**: Django REST Framework (DRF)
+- **Authentication**: Custom Token-based authentication (Bearer Token)
+- **CORS**: django-cors-headers
+- **File Handling**: Django Media handling for student photos and documents
+
+### Database
+- **Engine**: MySQL
+- **Database Name**: skillmax_db
+- **Primary Features**: Relational structure with support for JSON fields (for installments and custom fields).
+
+---
+
+## 3. Key Modules & Features
+
+### A. Lead Management
+- **Lead Enrollment**: capture lead details including source, course interests, and education.
+- **Lead Follow-up**: Track communication history, update status (New, Contacted, Qualified, Converted, etc.), and set next follow-up dates.
+- **Walk-in Logs**: Specifically log leads who visit the campus.
+
+### B. Student Management
+- **Admission**: Structured admission form capturing personal, guardian, and educational details.
+- **Student ID Generation**: Automatic generation of unique Student IDs with course-based prefixes (e.g., IT, AUTO, EMB, DM, BMS).
+- **Student Overview**: Comprehensive dashboard for each student showing their profile, course details, and fee status.
+- **Fee Management**: Support for One-time payments and Installment schemes.
+
+### C. Academic & Tracking
+- **Tracker**: Monitor student progress and milestones.
+- **Certification**: Generate professional certificates for students who meet eligibility criteria (e.g., "Paid Fully").
+
+### D. Administrative Features
+- **User Management**: Role-Based Access Control (RBAC) with roles like Super Admin, Admin, BDE, CRO, and CRE.
+- **Dynamic Form Builder**: Ability to add custom fields to the admission form via the UI.
+- **Activity Logs**: Detailed audit trail of user actions and student data changes.
+- **Database Backup**: Interface to manage system backups.
+
+---
+
+## 4. Application Flow
+
+1. **Authentication**: Users login via the Login page. Authenticated sessions use a Bearer Token.
+2. **Dashboard**: Upon login, users see a dashboard with key performance indicators (KPIs).
+3. **Lead to Student Conversion**:
+   - Leads are entered and followed up.
+   - Once a lead is "Converted", they can be admitted as a Student.
+4. **Admission Process**:
+   - Admin/Staff fills the Admission form.
+   - Dynamic fields are pulled from the configuration.
+   - Student ID is automatically assigned based on the selected course.
+5. **Fee Tracking**:
+   - Payments are recorded.
+   - System updates fee status (Pending, Partially Paid, Fully Paid).
+6. **Certification**:
+   - Once the course is complete and fees are fully paid, certificates can be generated and downloaded as PDF.
+
+---
+
+## 5. Directory Structure
+- `/frontend`: React application source code.
+- `/backend`: Django project (`skillmax_backend`) and main application app (`lead_enrollment`).
+- `/media`: Storage for uploaded student documents and photos.
+- `A3campus.sql`: Database schema export.
+
+## 6. How to Run
+
+### Backend
+1. Activate virtual environment: `source venv/bin/activate`
+2. Navigate to backend: `cd backend`
+3. Run server: `python manage.py runserver 0.0.0.0:8000`
+
+### Frontend
+1. Navigate to frontend: `cd frontend`
+2. Install dependencies: `npm install`
+3. Run dev server: `npm run dev`

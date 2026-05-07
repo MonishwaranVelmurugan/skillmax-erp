@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Connection Test</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 2rem;
+        }
+
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Backend Connectivity Test</h1>
+    <p>Click the button below to send a test lead to the backend (http://127.0.0.1:8000/api/leads/).</p>
+
+    <button onclick="testConnection()" style="padding: 10px 20px; cursor: pointer;">Test Connection</button>
+
+    <div id="status" style="margin-top: 20px;"></div>
+    <div id="debug"
+        style="margin-top: 20px; font-family: monospace; background: #f0f0f0; padding: 10px; display: none;"></div>
+
+    <script>
+        async function testConnection() {
+            const statusEl = document.getElementById('status');
+            const debugEl = document.getElementById('debug');
+
+            statusEl.innerText = 'Sending request...';
+            statusEl.className = '';
+            debugEl.style.display = 'block';
+            debugEl.innerText = 'Preparing fetch request...';
+
+            try {
+                const payload = {
+                    "date": new Date().toISOString().split('T')[0],
+                    "full_name": "Browser Test User",
+                    "assigned_to": "ADMIN",
+                    "education": "UG",
+                    "work_experience": "Fresher",
+                    "phone_number": "9998887777",
+                    "lead_source": "Organics",
+                    "lead_status": "New",
+                    "course_interested": "Automation",
+                    "next_follow_up_date": null
+                };
+
+                debugEl.innerText += '\nPayload: ' + JSON.stringify(payload);
+
+                const response = await fetch('http://127.0.0.1:8000/api/leads/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                debugEl.innerText += '\nResponse Status: ' + response.status;
+                const text = await response.text();
+                debugEl.innerText += '\nResponse Body: ' + text;
+
+                if (response.ok) {
+                    statusEl.innerText = '✅ Success! Data sent to backend and stored in MySQL.';
+                    statusEl.className = 'success';
+                } else {
+                    statusEl.innerText = '❌ Failed. View debug details below.';
+                    statusEl.className = 'error';
+                }
+            } catch (e) {
+                statusEl.innerText = '❌ Network/Script Error: ' + e.message;
+                statusEl.className = 'error';
+                debugEl.innerText += '\nException: ' + e.toString();
+            }
+        }
+    </script>
+</body>
+
+</html>
